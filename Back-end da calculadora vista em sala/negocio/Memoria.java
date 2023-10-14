@@ -15,7 +15,6 @@ public class Memoria {
 	public String getNumeros() {
 		String resultado = "";
 		
-		
 		for (String num : numeros) {
 			if(!num.equals("+")) {
 				if(!num.equals("-"))
