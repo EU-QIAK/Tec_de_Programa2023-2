@@ -1,38 +1,39 @@
-package Persistencia;
+package persistencia;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-import back_end.Aluno;
+import controle.Aluno;
 
 public class LerDados {
 
-	public ArrayList<Aluno> alunos;
+	public ArrayList<String> data;
 	
-	public LerDados(){
-		alunos = new ArrayList<Aluno>();	
-	}
-	
-	public void LerDados (String diretorio){
+	public ArrayList<String> lerDados (String diretorio) throws FileNotFoundException, IOException{
 		
-		try {
-			FileReader arquivo = new FileReader(diretorio);
-			BufferedReader Leitura = new BufferedReader(arquivo);
+		try (BufferedReader Leitura = new BufferedReader(new FileReader(diretorio))){			
 			
-			while (Leitura.ready()) {
-				alunos.add(SeparDadosDosAlunos(Leitura.readLine()));
+			data = new ArrayList<>();
+			try {
+				FileReader arquivo = new FileReader(diretorio);
+				BufferedReader leitura = new BufferedReader(arquivo);
+
+				while (leitura.ready()) {
+					data.add(leitura.readLine());
+				}
+
+			} catch (Exception e) {
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 	}
-	
-	private Aluno SeparDadosDosAlunos(String linha) {
-		
+		return data;
+	}
+	private String[] SeparDadosDosAlunos(String linha) {
 		String[] Dados = linha.split(";");
-		Aluno c = new Aluno(Dados[1], 0);
-		return c;
+		return Dados;
 		
 	}
 }
