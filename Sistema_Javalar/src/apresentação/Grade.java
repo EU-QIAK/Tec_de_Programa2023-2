@@ -22,30 +22,28 @@ public class Grade extends JPanel {
 	private Plano plano;
 	private SistemaJava sistemaJava;
 
-	private ImageIcon Java = new ImageIcon("dados&Imagens\\Java.png");
-	private ImageIcon phyton = new ImageIcon("dados&Imagens\\Phyton.png");
-	private ImageIcon JavaScript = new ImageIcon("dados&Imagens\\JavaScript.png");
-	private ImageIcon Ruby = new ImageIcon("dados&Imagens\\Ruby.png");
-	private ImageIcon Php = new ImageIcon("dados&Imagens\\Php.png");
-	private ImageIcon CSharp = new ImageIcon("dados&Imagens\\C#.png");
-	private ImageIcon Cmaismais = new ImageIcon("dados&Imagens\\C++.png");
-	private ImageIcon C = new ImageIcon("dados&Imagens\\C.png");
-	private ImageIcon Bug = new ImageIcon("dados&Imagens\\Bug.png");
-	private ImageIcon Dev = new ImageIcon("dados&Imagens\\Dev.png");
-	private ImageIcon Fundo = new ImageIcon("dados&Imagens\\\\Fundo.png");
+	private ImageIcon Java = new ImageIcon("dados&Imagens\\imagens\\Java.png");
+	private ImageIcon phyton = new ImageIcon("dados&Imagens\\imagens\\Phyton.png");
+	private ImageIcon JavaScript = new ImageIcon("dados&Imagens\\imagens\\JavaScript.png");
+	private ImageIcon Ruby = new ImageIcon("dados&Imagens\\imagens\\Ruby.png");
+	private ImageIcon Php = new ImageIcon("dados&Imagens\\imagens\\Php.png");
+	private ImageIcon CSharp = new ImageIcon("dados&Imagens\\imagens\\C#.png");
+	private ImageIcon Cmaismais = new ImageIcon("dados&Imagens\\imagens\\C++.png");
+	private ImageIcon C = new ImageIcon("dados&Imagens\\imagens\\C.png");
+	private ImageIcon Bug = new ImageIcon("dados&Imagens\\imagens\\Bug.png");
+	private ImageIcon Dev = new ImageIcon("dados&Imagens\\imagens\\Dev.png");
+	private ImageIcon Fundo = new ImageIcon("dados&Imagens\\imagens\\Fundo.png");
 	
 	public Grade(SistemaJava sistema) {
 		
 		this.sistemaJava = sistema;
 		
 		setLayout(new GridLayout(15,15));
-		Criargrade(sistema.listadePlaneta);	
-		
-//		girar(sistema.listadePlaneta);
-		
+		Criargrade(sistema);	
+				
 	}
 	
-	public void Criargrade(ArrayList<Planeta> listadePlaneta) {		
+	public void Criargrade(SistemaJava java) {		
 		
 		int id = 0;
 
@@ -72,27 +70,26 @@ public class Grade extends JPanel {
 			}
 		}
 		
-		girar(listadePlaneta);
+		girar(java);
 	
 	}
 	
-	public void resetarPlano(ArrayList<Planeta> listadePlaneta) {
+	public void resetarPlano(SistemaJava java) {
 		for (CelulaPanel celula  : celulasdoPlano) {
 			this.remove(celula);
 		}
 		
 		celulasdoPlano.removeAll(celulasdoPlano);
 		
-		Criargrade(listadePlaneta);
-		setarBugs(listadePlaneta);
-		setarDevs(listadePlaneta);
+		Criargrade(java);
+		setarBugs(java);
+		setarDevs(java);
 	}	
 	
-	public void setarBugs(ArrayList<Planeta> listadePlaneta){
+	public void setarBugs(SistemaJava java){
 		int id=0;
 		for (Celula celula : sistemaJava.plano.listaCel) {
 			if(celula.bug == true) {
-//				System.out.println("kaique" + id);
 				Setarimagem(id, Bug);
 			}
 			id++;
@@ -100,19 +97,18 @@ public class Grade extends JPanel {
 	}
 	
 
-	public void setarDevs(ArrayList<Planeta> listadePlaneta){
+	public void setarDevs(SistemaJava java){
 		int id=0;
-		for (Celula celula : sistemaJava.plano.listaCel) {
+		for (Celula celula : java.plano.listaCel) {
 			if(celula.desenvolvedor == true) {
-//				System.out.println("kaique" + id);
 				Setarimagem(id, Dev);
 			}
 			id++;
 		}
 	}
 	
-	public void girar(ArrayList<Planeta> listadePlaneta) {
-		for (Planeta planeta : listadePlaneta) {
+	public void girar(SistemaJava java) {
+		for (Planeta planeta : java.listadePlaneta) {
 			moverPlanetas(planeta);	
 		}
 	}
@@ -120,34 +116,33 @@ public class Grade extends JPanel {
 	public void moverPlanetas(Planeta planeta) {
 		int id = 0;
 		for (CelulaPanel CelulaPanel: celulasdoPlano) {			
-			if(CelulaPanel.x == planeta.getx() && CelulaPanel.y == planeta.gety()) {
-				
+			if(CelulaPanel.x == planeta.getx() && CelulaPanel.y == planeta.gety()) {				
 				if(planeta.nome == "Phyton") {	
-					//Setarimagem(97, Fundo);
+					if(planeta.mov!=0)
 					Setarimagem(id, phyton);
 				}
 				else if(planeta.nome == "JavaScript"){
-				//	Setarimagem(82, Fundo);
+					if(planeta.mov!=0)
 					Setarimagem(id, JavaScript);
 				}
 				else if(planeta.nome == "Ruby on Rails"){
-//					Setarimagem(67, Fundo);
+					if(planeta.mov!=0)
 					Setarimagem(id, Ruby);
 				}
 				else if(planeta.nome == "PHP"){
-//					Setarimagem(52, Fundo);
+					if(planeta.mov!=0)
 					Setarimagem(id, Php);
 				}
 				else if(planeta.nome == "C#"){
-//					Setarimagem(37, Fundo);
+					if(planeta.mov!=0)
 					Setarimagem(id, CSharp);
 				}
 				else if(planeta.nome == "C++"){
-//					Setarimagem(22, Fundo);
+					if(planeta.mov!=0)
 					Setarimagem(id, Cmaismais);
 				}
 				else if(planeta.nome == "C"){
-//					Setarimagem(7, Fundo);
+					if(planeta.mov!=0)
 					Setarimagem(id, C);
 				}
 			

@@ -18,7 +18,7 @@ public abstract class Planeta implements Astroquemove {
 	protected int esquerda;
 	protected int superior;
 	protected int inferior;
-	protected int mov;
+	public int mov;
 	
 	//marcação
 	protected int quantMaxAno;

@@ -49,15 +49,14 @@ public class Plano {
 			int checar = 0;
 			
 			do {
-				checar = 0;
 				aleatorio = random.nextInt(224);
+				checar = 0;
 				
-				if(listaCel.get(aleatorio).bug==false) {
+				if(listaCel.get(aleatorio).bug==false && aleatorio != 112) {
 					listaCel.get(aleatorio).bug=true;
 					checar = 1;
 				}
 			}while(checar==0);
-			
 			if(aleatorio==112) {
 				i--;
 				continue;
@@ -88,7 +87,7 @@ public class Plano {
 				checar = 0;
 				aleatorio = random.nextInt(224);
 				
-				if(listaCel.get(aleatorio).desenvolvedor==false) {
+				if(listaCel.get(aleatorio).desenvolvedor==false && aleatorio != 112) {
 					listaCel.get(aleatorio).desenvolvedor=true;
 					checar = 1;
 				}

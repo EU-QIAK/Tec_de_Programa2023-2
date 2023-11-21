@@ -49,7 +49,7 @@ public class Janela extends JFrame implements ActionListener{
 		grade.setPreferredSize(new Dimension(600,600));
 		grade.addAncestorListener(null);
 		add(grade, BorderLayout.WEST);
-		grade.girar(java.listadePlaneta);	
+		grade.girar(java);	
 		
 		//criando os botões
 		botoes = new AreaDosBotoes();
@@ -75,7 +75,7 @@ public class Janela extends JFrame implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(b.getText().equals("processar proximo instantes")) {
 				java.menudosistema();
-				grade.resetarPlano(java.listadePlaneta);
+				grade.resetarPlano(java);
 				grade.revalidate();
 				grade.repaint();
 				
