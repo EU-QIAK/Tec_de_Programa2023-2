@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class AreaDosBotoes extends JPanel{
 
-	Botao processarProximoInstantes;
+	Botao processarProximosInstantes;
 	Botao lerNovoArquivodeEntrada;
 	Botao GravarRelatorio;
 	Botao LerDadosDeOutrosParticipantes;
@@ -21,13 +21,13 @@ public class AreaDosBotoes extends JPanel{
 		
 		setLayout(new GridLayout(5,0));
 		
-		processarProximoInstantes = criarBotao("processar proximo instantes", Color.lightGray);
-		processarProximoInstantes.setFont(new Font("arial", Font.BOLD, 12));
-		processarProximoInstantes.setBorder(BorderFactory.createLineBorder(Color.white));
-		processarProximoInstantes.addActionListener(null);
-		add(processarProximoInstantes);
+		processarProximosInstantes = criarBotao("processar proximos instantes", new Color(72, 209, 204));
+		processarProximosInstantes.setFont(new Font("arial", Font.BOLD, 12));
+		processarProximosInstantes.setBorder(BorderFactory.createLineBorder(Color.white));
+		processarProximosInstantes.addActionListener(null);
+		add(processarProximosInstantes);
 		
-		lerNovoArquivodeEntrada = criarBotao("ler novo arquivo de entrada", Color.lightGray);
+		lerNovoArquivodeEntrada = criarBotao("ler novo arquivo de entrada", new Color(173, 255, 47));
 		lerNovoArquivodeEntrada.setFont(new Font("arial", Font.BOLD, 12));
 		lerNovoArquivodeEntrada.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(lerNovoArquivodeEntrada);

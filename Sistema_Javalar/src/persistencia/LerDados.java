@@ -13,27 +13,33 @@ public class LerDados {
 	
 	public ArrayList<String> lerDados (String diretorio) throws FileNotFoundException, IOException{
 		
-		try (BufferedReader Leitura = new BufferedReader(new FileReader(diretorio))){			
+		try (BufferedReader Leitura = new BufferedReader(new FileReader(diretorio))){
 			
 			data = new ArrayList<>();
 			
 			try {
 				FileReader arquivo = new FileReader(diretorio);
 				BufferedReader leitura = new BufferedReader(arquivo);
-
-				while (leitura.ready()) {
-					data.add(leitura.readLine());
+				leitura.readLine();				
+                
+                while (leitura.ready()) {
+					String a3 = leitura.readLine();
+					data.add(a3);
+//					System.out.println(a3);
 				}
 
 			} catch (Exception e) {
 			}
 
 		}
-	
 		return data;
 	}
-	private String[] SeparDadosDoRelatorio(String linha) {
-		String[] Dados = linha.split(" ");
+	
+	public String[] SeparDadosDoRelatorio(String linha) {
+		String[] Dados = linha.split("	");
+		for (String string : Dados) {
+//			System.out.println(string);
+		}
 		return Dados;
 		
 	}

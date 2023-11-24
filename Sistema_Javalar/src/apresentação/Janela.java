@@ -7,23 +7,28 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import controle.Main;
 import controle.Planeta;
 import controle.SistemaJava;
+import persistencia.EscreverDados;
 
 public class Janela extends JFrame implements ActionListener{
 
 	private Grade grade;
 	private AreaDosBotoes botoes;
-	private SistemaJava java;
+	private SistemaJava javalar;
+	private EscreverDados escreverDados;
 	
 	public Janela() {
 		
@@ -40,23 +45,24 @@ public class Janela extends JFrame implements ActionListener{
 	}
 	
 	public void organizar() {
-		java = new SistemaJava();
+		javalar = new SistemaJava();
+		escreverDados = new EscreverDados();
 //		java.menudosistema();
 		
 		//criando a grade
 		setLayout(new BorderLayout());
-		grade = new Grade(java);
+		grade = new Grade(javalar);
 		grade.setPreferredSize(new Dimension(600,600));
 		grade.addAncestorListener(null);
 		add(grade, BorderLayout.WEST);
-		grade.girar(java);	
+		grade.girar(javalar);	
 		
 		//criando os botões
 		botoes = new AreaDosBotoes();
 		botoes.setPreferredSize(new Dimension(200,0));
 		botoes.addAncestorListener(null);
 		add(botoes, BorderLayout.EAST);
-		botoes.processarProximoInstantes.addActionListener(new paineis(botoes.processarProximoInstantes));
+		botoes.processarProximosInstantes.addActionListener(new paineis(botoes.processarProximosInstantes));
 		botoes.lerNovoArquivodeEntrada.addActionListener(new paineis(botoes.lerNovoArquivodeEntrada));
 		botoes.GravarRelatorio.addActionListener(new paineis(botoes.GravarRelatorio));
 		botoes.LerDadosDeOutrosParticipantes.addActionListener(new paineis(botoes.LerDadosDeOutrosParticipantes));
@@ -73,15 +79,14 @@ public class Janela extends JFrame implements ActionListener{
 		}
 	
 		public void actionPerformed(ActionEvent e) {
-			if(b.getText().equals("processar proximo instantes")) {
-				java.menudosistema();
-				grade.resetarPlano(java);
+			if(b.getText().equals("processar proximos instantes")) {
+				javalar.proximaLinhas();
+				grade.resetarPlano(javalar);
 				grade.revalidate();
 				grade.repaint();
-				
 			}
 			else if(b.getText().equals("ler novo arquivo de entrada")) {
-							
+				LerArquivos();
 			}
 			else if(b.getText().equals("Gravar relatorio")){
 				
@@ -96,58 +101,36 @@ public class Janela extends JFrame implements ActionListener{
 		
 	}
 	
+	public void LerArquivos() {
+		
+		JFileChooser fileChooser = new JFileChooser();
+		
+		fileChooser.setCurrentDirectory(new File("dados&Imagens//dados"));
+		
+		int returnvalor = fileChooser.showOpenDialog(fileChooser);
+		
+		if(returnvalor == JFileChooser.APPROVE_OPTION){
+			
+			File selectedFile = fileChooser.getSelectedFile();
+			String diretorio = selectedFile+"";
+			
+			try {
+				javalar.menudosistema(selectedFile);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+//			grade.resetarPlano(javalar);
+//			grade.revalidate();
+//			grade.repaint();
+//			escreverDados.escreverDados(diretorio, getName());
+		}
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-//	public void moverPlentas(Planeta planeta) {
-//		int id = 0;
-//		for (CelulaPanel CelulaPanel: grade.celulasdoPlano) {			
-//			if(CelulaPanel.x == planeta.getx() && CelulaPanel.y == planeta.gety()) {
-//				
-//				if(planeta.nome == "Phyton") {	
-//					grade.Setarimagem(97, grade.Fundo);
-//					grade.Setarimagem(id, grade.phyton);
-//				}
-//				else if(planeta.nome == "JavaScript"){
-//					grade.Setarimagem(82, grade.Fundo);
-//					grade.Setarimagem(id, grade.JavaScript);
-//				}
-//				else if(planeta.nome == "Ruby on Rails"){
-//					grade.Setarimagem(67, grade.Fundo);
-//					grade.Setarimagem(id, grade.Ruby);
-//				}
-//				else if(planeta.nome == "PHP"){
-//					grade.Setarimagem(52, grade.Fundo);
-//					grade.Setarimagem(id, grade.Php);
-//				}
-//				else if(planeta.nome == "C#"){
-//					grade.Setarimagem(37, grade.Fundo);
-//					grade.Setarimagem(id, grade.CSharp);
-//				}
-//				else if(planeta.nome == "C++"){
-//					grade.Setarimagem(22, grade.Fundo);
-//					grade.Setarimagem(id, grade.Cmaismais);
-//				}
-//				else if(planeta.nome == "C"){
-//					grade.Setarimagem(7, grade.Fundo);
-//					grade.Setarimagem(id, grade.C);
-//				}
-//			
-//			}else {
-//				grade.Setarimagem(CelulaPanel.id, grade.Fundo);
-//				
-//			}
-//			grade.Setarimagem(CelulaPanel.id, grade.Fundo);
-//			id++;
-//		}
-//	}
-	
-//	public static void main(String[] args) {
-//		
-//		Janela janela= new Janela();
-//	}
-
 }

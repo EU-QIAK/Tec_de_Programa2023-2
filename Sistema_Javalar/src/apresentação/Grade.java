@@ -82,25 +82,24 @@ public class Grade extends JPanel {
 		celulasdoPlano.removeAll(celulasdoPlano);
 		
 		Criargrade(java);
-		setarBugs(java);
-		setarDevs(java);
+		setarDevs();
+		setarBugs();
 	}	
 	
-	public void setarBugs(SistemaJava java){
+	public void setarBugs(){
 		int id=0;
-		for (Celula celula : sistemaJava.plano.listaCel) {
-			if(celula.bug == true) {
+		for (Celula celula : sistemaJava.getplano().listaCel) {
+			if(celula.bug == true && celula.desenvolvedor == false) {
 				Setarimagem(id, Bug);
 			}
 			id++;
 		}
 	}
 	
-
-	public void setarDevs(SistemaJava java){
+	public void setarDevs(){
 		int id=0;
-		for (Celula celula : java.plano.listaCel) {
-			if(celula.desenvolvedor == true) {
+		for (Celula celula : sistemaJava.getplano().listaCel) {
+			if(celula.desenvolvedor == true && celula.bug == false) {
 				Setarimagem(id, Dev);
 			}
 			id++;
@@ -108,7 +107,7 @@ public class Grade extends JPanel {
 	}
 	
 	public void girar(SistemaJava java) {
-		for (Planeta planeta : java.listadePlaneta) {
+		for (Planeta planeta : java.getListaDePlaneta()) {
 			moverPlanetas(planeta);	
 		}
 	}
@@ -148,7 +147,6 @@ public class Grade extends JPanel {
 			
 			}else {
 				Setarimagem(CelulaPanel.id, Fundo);
-				
 			}
 			Setarimagem(CelulaPanel.id, Fundo);
 			id++;

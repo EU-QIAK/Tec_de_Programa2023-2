@@ -36,7 +36,7 @@ public class Plano {
 	
 	//add bugs
 	public void sortearbug(int quantbug) {
-			
+		
 		this.quantbug = quantbug;
 		
 		System.out.println("Os " + quantbug +" bugs estão nas posições: ");
@@ -44,15 +44,14 @@ public class Plano {
 		for (int i = 0; i < quantbug; i++) {
 		
 			Random random = new Random();
-			
 			int aleatorio = 0;
 			int checar = 0;
 			
 			do {
-				aleatorio = random.nextInt(224);
+				aleatorio = random.nextInt(225);
 				checar = 0;
 				
-				if(listaCel.get(aleatorio).bug==false && aleatorio != 112) {
+				if(listaCel.get(aleatorio).bug==false && listaCel.get(aleatorio).desenvolvedor==false && aleatorio != 112) {
 					listaCel.get(aleatorio).bug=true;
 					checar = 1;
 				}
@@ -62,32 +61,29 @@ public class Plano {
 				continue;
 			}
 			
-		System.out.println("posição em y e x: ("+ listaCel.get(aleatorio).y + ", " + listaCel.get(aleatorio).x + ")");
+		System.out.println("posição em y e x: ("+ listaCel.get(aleatorio).y + ", " + listaCel.get(aleatorio).x + ")\n");
 		
 		}
-		System.out.println("");
 	}
 
 	//add desenvolvedor 
 	public void sorteardesenvolvedor(int quantdesenv) {
 		
-		this.quantdesenv = quantdesenv;
 		
+		this.quantdesenv = quantdesenv;
+				
 		System.out.println("Os " + quantdesenv +" desenvolvedores estão nas posições: ");
 				
-		for (int i = 0; i < quantdesenv; i++) {
+		for (int i = 0; i < quantdesenv; i++) {			
 			
 			Random random = new Random();
-			
 			int aleatorio = 0;
 			int checar = 0;
 			
-			do {
-				
+			do {	
 				checar = 0;
-				aleatorio = random.nextInt(224);
-				
-				if(listaCel.get(aleatorio).desenvolvedor==false && aleatorio != 112) {
+				aleatorio = random.nextInt(225);
+				if(listaCel.get(aleatorio).desenvolvedor==false && listaCel.get(aleatorio).bug==false && aleatorio != 112) {
 					listaCel.get(aleatorio).desenvolvedor=true;
 					checar = 1;
 				}
@@ -98,10 +94,9 @@ public class Plano {
 				continue;
 			}
 		
-			System.out.println("posição em y e x: ("+ listaCel.get(aleatorio).y + ", " + listaCel.get(aleatorio).x + ")");
+			System.out.println("posição em y e x: ("+ listaCel.get(aleatorio).y + ", " + listaCel.get(aleatorio).x + ")\n");
 		
 		}
-		System.out.println("");
 		}
 
 	//caso pare em um bug
@@ -109,7 +104,7 @@ public class Plano {
 		if(planeta.mov>0) {
 			for (Celula celula : plano.listaCel) {
 				
-				if(celula.x == planeta.getx() && celula.y == planeta.gety() && celula.bug == true) {
+				if(celula.x == planeta.getx() && celula.y == planeta.gety() && celula.bug == true && celula.desenvolvedor == false ) {
 					
 					planeta.mov--;
 					
@@ -125,7 +120,7 @@ public class Plano {
 	public void bateunodesenv(Plano plano, Planeta planeta) {
 		if(planeta.mov>0) {
 			for (Celula celula : plano.listaCel) {
-				if(celula.x == planeta.getx() && celula.y == planeta.gety() && celula.desenvolvedor == true) {
+				if(celula.x == planeta.getx() && celula.y == planeta.gety() && celula.desenvolvedor == true && celula.bug == false) {
 					
 					planeta.mov++;
 					

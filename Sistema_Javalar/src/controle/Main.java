@@ -1,11 +1,14 @@
 package controle;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Main {
 
-	public static void main(String[] args) {
-//		
-//		SistemaJava sistema = new SistemaJava();
-//		sistema.menudosistema();
-//		
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		
+		SistemaJava sistema = new SistemaJava();
+		sistema.menudosistema(null);
+		
 	}
 }
