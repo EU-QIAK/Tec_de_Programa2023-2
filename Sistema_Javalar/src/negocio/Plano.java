@@ -1,4 +1,4 @@
-package controle;
+package negocio;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -13,6 +13,8 @@ public class Plano {
 	public int quantbug;
 	public int quantdesenv;
 	public Celula celula;
+	private int quatidadeMaxBug = 0;
+	private int quatidadeMaxDev = 0;
 	
 	//criandoplano
 	public Plano(int tamanhox, int tamanhoy) {
@@ -42,7 +44,7 @@ public class Plano {
 		System.out.println("Os " + quantbug +" bugs estão nas posições: ");
 		
 		for (int i = 0; i < quantbug; i++) {
-		
+			if(quatidadeMaxBug < 112){
 			Random random = new Random();
 			int aleatorio = 0;
 			int checar = 0;
@@ -53,6 +55,8 @@ public class Plano {
 				
 				if(listaCel.get(aleatorio).bug==false && listaCel.get(aleatorio).desenvolvedor==false && aleatorio != 112) {
 					listaCel.get(aleatorio).bug=true;
+					quatidadeMaxBug++;
+					System.out.println(quatidadeMaxBug+"");
 					checar = 1;
 				}
 			}while(checar==0);
@@ -61,21 +65,23 @@ public class Plano {
 				continue;
 			}
 			
-		System.out.println("posição em y e x: ("+ listaCel.get(aleatorio).y + ", " + listaCel.get(aleatorio).x + ")\n");
-		
+			System.out.println("posição em y e x: ("+ listaCel.get(aleatorio).y + ", " + listaCel.get(aleatorio).x + ")\n");
+			
+		}else {
+			System.out.println("\nacabou os bugs");
+		}
 		}
 	}
 
 	//add desenvolvedor 
 	public void sorteardesenvolvedor(int quantdesenv) {
 		
-		
 		this.quantdesenv = quantdesenv;
-				
+
 		System.out.println("Os " + quantdesenv +" desenvolvedores estão nas posições: ");
 				
-		for (int i = 0; i < quantdesenv; i++) {			
-			
+		for (int i = 0; i < quantdesenv; i++) {	
+			if(quatidadeMaxDev < 112){
 			Random random = new Random();
 			int aleatorio = 0;
 			int checar = 0;
@@ -85,6 +91,8 @@ public class Plano {
 				aleatorio = random.nextInt(225);
 				if(listaCel.get(aleatorio).desenvolvedor==false && listaCel.get(aleatorio).bug==false && aleatorio != 112) {
 					listaCel.get(aleatorio).desenvolvedor=true;
+					quatidadeMaxDev++;
+					System.out.println(quatidadeMaxDev+"");
 					checar = 1;
 				}
 			}while(checar==0);
@@ -95,9 +103,11 @@ public class Plano {
 			}
 		
 			System.out.println("posição em y e x: ("+ listaCel.get(aleatorio).y + ", " + listaCel.get(aleatorio).x + ")\n");
-		
+		}else {
+			System.out.println("\nacabou os bugs");
 		}
 		}
+	}
 
 	//caso pare em um bug
 	public void bateunobug(Plano plano, Planeta planeta) {
@@ -107,6 +117,9 @@ public class Plano {
 				if(celula.x == planeta.getx() && celula.y == planeta.gety() && celula.bug == true && celula.desenvolvedor == false ) {
 					
 					planeta.mov--;
+					planeta.bateuBug++;
+					quatidadeMaxBug--;
+					
 					
 					celula.bug = false;
 					
@@ -123,6 +136,8 @@ public class Plano {
 				if(celula.x == planeta.getx() && celula.y == planeta.gety() && celula.desenvolvedor == true && celula.bug == false) {
 					
 					planeta.mov++;
+					planeta.bateuDev++;
+					quatidadeMaxBug--;
 					
 					celula.desenvolvedor = false;
 					

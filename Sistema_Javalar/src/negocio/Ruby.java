@@ -1,8 +1,8 @@
-package controle;
+package negocio;
 
 public class Ruby extends Planeta {
 
-	public Ruby(int x, int y, String nome, controle.Plano plano) {
+	public Ruby(int x, int y, String nome, negocio.Plano plano) {
 		super(x, y, nome, plano);
 
 		this.nome= "Ruby on Rails";
@@ -18,6 +18,9 @@ public class Ruby extends Planeta {
 		this.quantMaxAno = 24;
 		this.horasDias = 48;
 		this.quantParaDias = 48;
+		this.bateuBug = 0;
+		this.bateuDev = 0;
+		this.anos = 0;
 	
 	}
 }

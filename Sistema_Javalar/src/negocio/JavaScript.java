@@ -1,8 +1,8 @@
-package controle;
+package negocio;
 
 public class JavaScript extends Planeta {
 
-	public JavaScript(int x, int y, String nome, controle.Plano plano) {
+	public JavaScript(int x, int y, String nome, negocio.Plano plano) {
 		super(x, y, nome, plano);
 	
 		this.nome= "JavaScript";
@@ -18,6 +18,9 @@ public class JavaScript extends Planeta {
 		this.quantMaxAno = 16;
 		this.horasDias = 10;
 		this.quantParaDias = 10;
+		this.bateuBug = 0;
+		this.bateuDev = 0;
+		this.anos = 0;
 	
 	}
 }

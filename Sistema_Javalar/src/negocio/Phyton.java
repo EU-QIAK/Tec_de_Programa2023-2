@@ -1,4 +1,4 @@
-package controle;
+package negocio;
 
 public class Phyton extends Planeta{
 	
@@ -18,6 +18,10 @@ public class Phyton extends Planeta{
 		this.quantMaxAno = 8;
 		this.horasDias = 24;
 		this.quantParaDias = 24;
+		this.bateuBug = 0;
+		this.bateuDev = 0;
+		this.anos = 0;
+
 	}
 	
 }

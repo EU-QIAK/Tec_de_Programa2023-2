@@ -1,4 +1,4 @@
-package controle;
+package negocio;
 
 public interface Astroquemove {
 

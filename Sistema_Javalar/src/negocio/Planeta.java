@@ -1,4 +1,4 @@
-package controle;
+package negocio;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,13 @@ public abstract class Planeta implements Astroquemove {
 	protected int quantMaxAno;
 	protected double horasDias;
 	protected double quantParaDias;
-	
+	protected int bateuBug;
+	protected int bateuDev;
+	protected double anos;
+	protected double dias;
+	protected double horas;
+	protected double movimentos;
+
 	//construtor
 	public Planeta(int x, int y, String nome, Plano plano) {
 		this.x = x;
@@ -49,11 +55,10 @@ public abstract class Planeta implements Astroquemove {
 		
 		//contando os anos
 		int posiandadas= 0;
-		int anos = 0;
 		
 		//contando as horas e dias
-		double horas = tempo * horasDias;
-		double dias = horas/quantParaDias;
+		horas = tempo * horasDias;
+		dias = horas/quantParaDias;
 		
 		//movimentandp os planetas
 		int auxilio = 0;
@@ -91,13 +96,13 @@ public abstract class Planeta implements Astroquemove {
 			}
 		}
 		
-		double movimento = (auxilio/tempo); 
+		movimentos = (auxilio/tempo); 
 		
 		System.out.println("-após " + tempo + " unidades de tempo, o planeta " + nome + " está na Posição (y, x): ("+ y  + "," + x + ")");
 		System.out.println("-Anos andados: " + anos);
 		System.out.println("-Horas: " + horas);
 		System.out.println("-dias: " + dias);
-		System.out.println("-velocidade dos movimentos do " + nome + " está em: " + movimento);
+		System.out.println("-velocidade dos movimentos do " + nome + " está em: " + movimentos);
 		
 		}else {
 			System.out.println("O planeta " + nome + "... KABOOM!!(explosão)," + " local da explosão: (" + y +", "+ x + ")");		

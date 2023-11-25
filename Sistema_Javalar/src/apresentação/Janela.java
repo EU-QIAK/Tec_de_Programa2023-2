@@ -18,9 +18,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import controle.Main;
-import controle.Planeta;
-import controle.SistemaJava;
+import negocio.Main;
+import negocio.Planeta;
+import negocio.SistemaJava;
 import persistencia.EscreverDados;
 
 public class Janela extends JFrame implements ActionListener{
@@ -89,6 +89,7 @@ public class Janela extends JFrame implements ActionListener{
 				LerArquivos();
 			}
 			else if(b.getText().equals("Gravar relatorio")){
+				javalar.relatorio();
 				
 			}
 			else if(b.getText().equals("Ler dados de outros participantes")){

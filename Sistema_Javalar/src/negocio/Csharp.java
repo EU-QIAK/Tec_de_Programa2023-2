@@ -1,8 +1,8 @@
-package controle;
+package negocio;
 
 public class Csharp extends Planeta{
 
-	public Csharp(int x, int y, String nome, controle.Plano plano) {
+	public Csharp(int x, int y, String nome, negocio.Plano plano) {
 		super(x, y, nome, plano);
 		
 		this.nome= "C#";
@@ -18,6 +18,10 @@ public class Csharp extends Planeta{
 		this.quantMaxAno = 40;
 		this.horasDias = 4;
 		this.quantParaDias = 4;
+		this.bateuBug = 0;
+		this.bateuDev = 0;
+		this.anos = 0;
+
 	}
 
 }

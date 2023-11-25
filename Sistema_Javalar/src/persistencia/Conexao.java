@@ -9,7 +9,8 @@ public class Conexao {
 	private String usuario;
 	private String senha;
 	private String banco;
-
+	private Connection conexao;
+	
 	public Conexao() {
 
 		this.host = "da_java.mysql.dbaas.com.br"; 
@@ -28,5 +29,17 @@ public class Conexao {
         }
         return null;
 	}
+	
+//	public void fecharConexao() {
+//        try {
+//            if (conexao != null && !conexao.isClosed()) {
+//                conexao.close();
+//                System.out.println("Conexão fechada com sucesso.");
+//            }
+//        } catch (SQLException e) {
+//            System.err.println("Erro ao fechar a conexão: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
 
 }

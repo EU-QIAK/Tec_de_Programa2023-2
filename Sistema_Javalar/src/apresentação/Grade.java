@@ -10,10 +10,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controle.Celula;
-import controle.Planeta;
-import controle.Plano;
-import controle.SistemaJava;
+import negocio.Celula;
+import negocio.Planeta;
+import negocio.Plano;
+import negocio.SistemaJava;
 
 public class Grade extends JPanel {
 
@@ -53,6 +53,8 @@ public class Grade extends JPanel {
 					celulaPanel = new CelulaPanel(i, j, id, Fundo); 
 					celulaPanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
 //					String numeroString = i +", "+ j ;
+//					celulaPanel.add(new JLabel(numeroString));
+//					String numeroString = id + "";
 //					celulaPanel.add(new JLabel(numeroString)); 
 					add(celulaPanel);
 					celulasdoPlano.add(celulaPanel);

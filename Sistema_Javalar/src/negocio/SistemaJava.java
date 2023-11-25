@@ -1,5 +1,4 @@
-package controle;
-
+package negocio;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -179,8 +178,6 @@ public class SistemaJava {
 		for (String numeros : lerDados.SeparDadosDoRelatorio(linha)) {
 			int n = Integer.parseInt(numeros);
 			numerosDaRodada.add(n);
-			dados.add(numeros);
-			System.out.println(""+ numeros);
 		}
 			
 		//inicio
@@ -221,6 +218,112 @@ public class SistemaJava {
 		}else {
 			System.err.println("acabaram as linhas");
 		}
+	}
+	
+	public void relatorio() {
+		System.out.println("relatorio:");
+		
+		dados.add("");
+		dados.add("Kaique Damasceno");
+		dados.add("542062");
+		dados.add("AE_100.txt");
+		dados.add(""+listadePlaneta.get(0).bateuBug);
+		dados.add(""+listadePlaneta.get(1).bateuBug);
+		dados.add(""+listadePlaneta.get(2).bateuBug);
+		dados.add(""+listadePlaneta.get(3).bateuBug);
+		dados.add(""+listadePlaneta.get(4).bateuBug);
+		dados.add(""+listadePlaneta.get(5).bateuBug);
+		dados.add(""+listadePlaneta.get(6).bateuBug);
+		dados.add(""+listadePlaneta.get(0).bateuDev);
+		dados.add(""+listadePlaneta.get(1).bateuDev);
+		dados.add(""+listadePlaneta.get(2).bateuDev);
+		dados.add(""+listadePlaneta.get(3).bateuDev);
+		dados.add(""+listadePlaneta.get(4).bateuDev);
+		dados.add(""+listadePlaneta.get(5).bateuDev);
+		dados.add(""+listadePlaneta.get(6).bateuDev);
+		dados.add(""+listadePlaneta.get(0).movimentos);
+		dados.add(""+listadePlaneta.get(1).movimentos);
+		dados.add(""+listadePlaneta.get(2).movimentos);
+		dados.add(""+listadePlaneta.get(3).movimentos);
+		dados.add(""+listadePlaneta.get(4).movimentos);
+		dados.add(""+listadePlaneta.get(5).movimentos);
+		dados.add(""+listadePlaneta.get(6).movimentos);
+		dados.add(""+listadePlaneta.get(0).horas);
+		dados.add(""+listadePlaneta.get(1).horas);
+		dados.add(""+listadePlaneta.get(2).horas);
+		dados.add(""+listadePlaneta.get(3).horas);
+		dados.add(""+listadePlaneta.get(4).horas);
+		dados.add(""+listadePlaneta.get(5).horas);
+		dados.add(""+listadePlaneta.get(6).horas);
+		dados.add(""+listadePlaneta.get(0).anos);
+		dados.add(""+listadePlaneta.get(1).anos);
+		dados.add(""+listadePlaneta.get(2).anos);
+		dados.add(""+listadePlaneta.get(3).anos);
+		dados.add(""+listadePlaneta.get(4).anos);
+		dados.add(""+listadePlaneta.get(5).anos);
+		dados.add(""+listadePlaneta.get(6).anos);
+		
+		//função para checar os quadrantes
+		int bugQ1=0;
+		int devQ1=0;
+		int bugQ2=0;
+		int devQ2=0;
+		int bugQ3=0;
+		int devQ3=0;
+		int bugQ4=0;
+		int devQ4=0;
+		
+		for (Celula celula: plano.listaCel) {
+			if(celula.id <119) {
+				if(celula.x<=6 && celula.y<=6) {
+					if(celula.bug==true) {
+						bugQ1++;
+					}else if(celula.desenvolvedor==true){
+						devQ1++;
+					}
+				}
+				else if(celula.x<=6 && celula.y>=8) {
+					if(celula.bug==true) {
+						bugQ2++;
+					}else if(celula.desenvolvedor==true){
+						devQ2++;
+					}
+				}
+				
+			}else {
+				if(celula.x>=8 && celula.y<=6) {
+					if(celula.bug==true) {
+						bugQ3++;
+					}else if(celula.desenvolvedor==true){
+						devQ3++;
+					}
+				}
+				else if(celula.x>=8 && celula.y>=8) {
+					if(celula.bug==true) {
+						bugQ4++;
+					}else if(celula.desenvolvedor==true){
+						devQ4++;
+					}
+				}
+			}
+		}
+		
+		dados.add(""+ bugQ1);
+		dados.add(""+ bugQ2);
+		dados.add(""+ bugQ3);
+		dados.add(""+ bugQ4);
+		dados.add(""+ devQ1);
+		dados.add(""+ devQ2);
+		dados.add(""+ devQ3);
+		dados.add(""+ devQ4);
+		
+		int id =1;
+		for (String string : dados) {
+			System.out.println(id+ " " + string);
+			id++;
+		}
+		
+		dados.clear();
 	}
 	
 	public ArrayList<Planeta> getListaDePlaneta() {

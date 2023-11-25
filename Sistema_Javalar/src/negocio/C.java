@@ -1,8 +1,8 @@
-package controle;
+package negocio;
 
 public class C extends Planeta{
 
-	public C(int x, int y, String nome, controle.Plano plano) {
+	public C(int x, int y, String nome, negocio.Plano plano) {
 		super(x, y, nome, plano);
 	
 		this.nome= "C";
@@ -18,5 +18,9 @@ public class C extends Planeta{
 		this.quantMaxAno = 56;
 		this.horasDias = 0.1;
 		this.quantParaDias = 0.1;
+		this.bateuBug = 0;
+		this.bateuDev = 0;
+		this.anos = 0;
+
 	}
 }

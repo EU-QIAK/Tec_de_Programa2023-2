@@ -1,8 +1,8 @@
-package controle;
+package negocio;
 
 public class Php extends Planeta{
 
-	public Php(int x, int y, String nome, controle.Plano plano) {
+	public Php(int x, int y, String nome, negocio.Plano plano) {
 		super(x, y, nome, plano);
 		
 		this.nome= "PHP";
@@ -18,6 +18,9 @@ public class Php extends Planeta{
 		this.quantMaxAno = 32;
 		this.horasDias = 60;
 		this.quantParaDias = 60;
+		this.bateuBug = 0;
+		this.bateuDev = 0;
+		this.anos = 0;
 		
 	}
 
