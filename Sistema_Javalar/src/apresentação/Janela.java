@@ -90,7 +90,6 @@ public class Janela extends JFrame implements ActionListener{
 			}
 			else if(b.getText().equals("Gravar relatorio")){
 				javalar.relatorio();
-				
 			}
 			else if(b.getText().equals("Ler dados de outros participantes")){
 				

@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import persistencia.EscreverDados;
 import persistencia.LerDados;
+import persistencia.SistemaJavalarDAO;
 
 public class SistemaJava {
 	
@@ -222,8 +223,7 @@ public class SistemaJava {
 	
 	public void relatorio() {
 		System.out.println("relatorio:");
-		
-		dados.add("");
+
 		dados.add("Kaique Damasceno");
 		dados.add("542062");
 		dados.add("AE_100.txt");
@@ -317,11 +317,26 @@ public class SistemaJava {
 		dados.add(""+ devQ3);
 		dados.add(""+ devQ4);
 		
-		int id =1;
-		for (String string : dados) {
-			System.out.println(id+ " " + string);
-			id++;
-		}
+//		int id = 0 ;
+//		for (String string : dados) {
+//			System.out.println(id+ " " + string);
+//			id++;
+//		}
+		
+		String relatorio = "Kaique Damasceno," + "542062," + "AE_100.txt," + listadePlaneta.get(0).bateuBug + "," + listadePlaneta.get(1).bateuBug + "," + listadePlaneta.get(2).bateuBug
+				+ "," + listadePlaneta.get(3).bateuBug + "," + listadePlaneta.get(4).bateuBug + "," + listadePlaneta.get(5).bateuBug + "," + listadePlaneta.get(6).bateuBug + "," + listadePlaneta.get(0).bateuDev
+				+ "," + listadePlaneta.get(1).bateuDev + "," + listadePlaneta.get(2).bateuDev + "," + listadePlaneta.get(3).bateuDev + "," + listadePlaneta.get(4).bateuDev + "," + listadePlaneta.get(5).bateuDev
+				+ "," + listadePlaneta.get(6).bateuDev + "," + listadePlaneta.get(0).movimentos + "," + listadePlaneta.get(1).movimentos + "," + listadePlaneta.get(2).movimentos + "," + listadePlaneta.get(3).movimentos
+				+ "," + listadePlaneta.get(4).movimentos + "," + listadePlaneta.get(5).movimentos + "," + listadePlaneta.get(6).movimentos + "," + listadePlaneta.get(0).horas + "," + listadePlaneta.get(1).horas
+				+ "," + listadePlaneta.get(2).horas + "," + listadePlaneta.get(3).horas + "," + listadePlaneta.get(4).horas + "," + listadePlaneta.get(5).horas + "," + listadePlaneta.get(6).horas 
+				+ "," + listadePlaneta.get(0).anos + "," + listadePlaneta.get(1).anos + "," + listadePlaneta.get(2).anos + "," + listadePlaneta.get(3).anos + "," + listadePlaneta.get(4).anos
+				+ "," + listadePlaneta.get(5).anos + "," + listadePlaneta.get(6).anos + "," + bugQ1 + "," + bugQ2 + "," + bugQ3 + "," + bugQ4 + "," + devQ1 + "," + devQ2 + "," + devQ3 + "," + devQ4;
+		
+		ArrayList<String> relatorioLista = new ArrayList<String>();
+		relatorioLista.add(relatorio);
+		
+		SistemaJavalarDAO s = new SistemaJavalarDAO();
+		s.SistemaJavalarDAO(relatorioLista);
 		
 		dados.clear();
 	}

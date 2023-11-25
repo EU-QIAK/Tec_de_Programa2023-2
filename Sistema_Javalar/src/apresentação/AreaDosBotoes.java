@@ -32,17 +32,17 @@ public class AreaDosBotoes extends JPanel{
 		lerNovoArquivodeEntrada.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(lerNovoArquivodeEntrada);
 		
-		GravarRelatorio = criarBotao("Gravar relatorio", Color.lightGray);
+		GravarRelatorio = criarBotao("Gravar relatorio", new Color(238, 233, 233));
 		GravarRelatorio.setFont(new Font("arial", Font.BOLD, 12));
 		GravarRelatorio.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(GravarRelatorio);
 		
-		LerDadosDeOutrosParticipantes = criarBotao("Ler dados de outros participantes", Color.lightGray);
+		LerDadosDeOutrosParticipantes = criarBotao("Ler dados de outros participantes", new Color(238, 59, 59));
 		LerDadosDeOutrosParticipantes.setFont(new Font("arial", Font.BOLD, 11));
 		LerDadosDeOutrosParticipantes.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(LerDadosDeOutrosParticipantes);
 		
-		GravarArquivoDeSaida = criarBotao("Gravar arquivo de saida", Color.lightGray);
+		GravarArquivoDeSaida = criarBotao("Gravar arquivo de saida", new Color(0, 191, 255));
 		GravarArquivoDeSaida.setFont(new Font("arial", Font.BOLD, 12));
 		GravarArquivoDeSaida.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(GravarArquivoDeSaida);
