@@ -12,6 +12,7 @@ import negocio.Aluno;
 
 public class RelatorioDAO {
 
+	//limitei a pesquisa ao banco de dados para 100 linhas 
 	private ResultSet getData() {
 		
 		try {
@@ -38,11 +39,11 @@ public class RelatorioDAO {
 
 			String sql = "SELECT * FROM javalar LIMIT 100";
 
-			ResultSet resultSet = conexao.prepareStatement(sql).executeQuery();
+			ResultSet resultados = conexao.prepareStatement(sql).executeQuery();
 
-			while (resultSet.next()) {
-				String name = resultSet.getString("nome");
-				int matricula = resultSet.getInt("matricula");
+			while (resultados.next()) {
+				String name = resultados.getString("nome");
+				int matricula = resultados.getInt("matricula");
 
 				estudantes.add(new Aluno(name, matricula));
 			}
@@ -179,6 +180,7 @@ public class RelatorioDAO {
 		return null;
 	}
 	
+	//quadrante com mais bug
 	public int retornarQuadranteComMaisBugs() {
 
 		int[] quadrantes = { 0, 0, 0, 0 };
@@ -208,7 +210,8 @@ public class RelatorioDAO {
 
 		return quadrante;
 	}
-	
+
+	//quadrante com mais dev
 	public int retornarQuadranteComMaisDevs() {
 
 		int[] quadrantes = { 0, 0, 0, 0 };
@@ -239,6 +242,7 @@ public class RelatorioDAO {
 		return quadrante;
 	}
 	
+	//total de instantes jogados
 	public int retornarQuantidadeDeInstantesAnalizados() {
 		
 		try {
@@ -258,6 +262,7 @@ public class RelatorioDAO {
 		return 0;
 	}
 	
+	//velocidade media de cada planeta
 	public double[] retornarVelocidadeMedia() {
 
 		int[] velocidades = { 0, 0, 0, 0, 0, 0, 0 };
@@ -288,6 +293,7 @@ public class RelatorioDAO {
 		return velocidadeMedia;
 	}
 	
+	//quantidade de bugs
 	public int retornarQuantidadeDeBugs() {
 		try {
 			ResultSet resultado = getData();
@@ -312,6 +318,7 @@ public class RelatorioDAO {
 		return 0;
 	}
 	
+	//quantidade de devs
 	public int retornarQuantidadeDeDevs() {
 		try {
 			ResultSet resultado = getData();
@@ -336,6 +343,7 @@ public class RelatorioDAO {
 		return 0;
 	}
 	
+	//quantidade de dias(em horas)
 	public int retornarQuantidadeHoras() {
 		try {
 			ResultSet resultado = getData();
@@ -360,6 +368,7 @@ public class RelatorioDAO {
 		return 0;
 	}
 	
+	//quantidade de anos
 	public int retornarQuantidadeAnos() {
 		try {
 			ResultSet resultado = getData();

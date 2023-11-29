@@ -101,6 +101,8 @@ public class EmissãoDoRelatorio{
 		EscreverDados dados = new EscreverDados();
 		
 		dados.escreverDados("dados&Imagens//dadosRelatorio//jogo", content.toString());
+		JOptionPane.showMessageDialog(null, "linha salva.");
+
 	}
 	
 	public class pegarNome {

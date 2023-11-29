@@ -196,7 +196,6 @@ public class SistemaJavalar {
 	//envia o relatorio para o banco de dados
 	public void relatorio(File file) {
 		this.file = file;
-		System.out.println("\nRelatorio enviado.");
 		
 		aluno = new Aluno("Kaique Damasceno", 542062);
 		
@@ -261,6 +260,10 @@ public class SistemaJavalar {
 		
 		SistemaJavalarDAO s = new SistemaJavalarDAO();
 		s.SistemaJavalarDAO(relatorioLista);
+		
+		JOptionPane.showMessageDialog(null, "Relatorio enviado.");
+
+		System.out.println("Relatorio enviado.");
 		
 	}
 	
